@@ -116,6 +116,9 @@
 文法誤りの検出だけではなく訂正を行う研究に水本ら~\cite{mizumoto12english} の英文法自動誤り訂正を行ったものがあるが，手法は一般的に利用
 できる形では配布されていない．
 
+さらに本格的なドキュメントはマークアップ言語を利用して記述されるが、ほとんどのドキュメント検査ツールはマークアップ言語に対応していない。
+そのため、ドキュメントの検査をするには前もってドキュメントからマークアップタグを削除する必要がある。
+
 \section{RedPenの特徴}
 
 以下 RedPen の主な特徴である．
@@ -140,15 +143,16 @@
 \item[{\bf エディタ}]
   RedPen をエディタ上で利用できるパッケージが存在する。現在RedPenを利用できるエディタには Atom，Emacs，Vim，IntelliJ などがある。
   これらのエディタでは同一の設定ファイルを利用できるので、執筆者は任意のエディタ上で規約の検査ができる。
+  図~\ref{fig:intellij} は IntelliJ IDEA というエディタの RedPen パッケージが動作している様子である。
 
 \end{description}
 
 \begin{figure}[thbp]
-\begin{center}
-\includegraphics[width=8cm]{figs/intellij.eps}
-\end{center}
-\caption{IntelliJ IDEA の RedPen パッケージ}
-\label{fig:intellij-idea}
+  \begin{center}
+    \includegraphics[width=8cm]{figs/intellij.eps}
+  \end{center}
+  \caption{IntelliJ IDEA の RedPen パッケージ}
+  \label{fig:intellij-idea}
 \end{figure}  
 
 \section{RedPenの拡張}
