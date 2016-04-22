@@ -1,0 +1,111 @@
+%
+% LaTeX2e template for FIT2010
+%
+
+%本テンプレートは *非公式* のものです.
+%ご自身の責任においてご利用下さい.
+
+\documentclass[a4j,twocolumn]{jarticle}
+\usepackage{url}
+\usepackage{amsmath,amssymb,amsfonts,amsthm,enumerate}
+%\usepackage[dvips]{graphicx}
+
+\makeatletter
+% \sectionと\subsection部分のフォントサイズを10.5ポイントに設定します
+% 参考URL http://www.h4.dion.ne.jp/~latexcat/intro/i7-r2.html
+\def\section{\@startsection{section}{1}{\z@}%
+   {0.6\Cvs}%
+   {0.3\Cvs}%
+   {\reset@font\fontsize{10.5pt}{0pt}\bfseries}}
+\def\subsection{\@startsection{subsection}{2}{\z@}%
+   {\Cdp}%
+   {\Cdp}%
+   {\reset@font\fontsize{10.5pt}{0pt}\bfseries}}
+% 章番号の後にピリオドを入れます.
+% 参考URL http://oku.edu.mie-u.ac.jp/~okumura/texfaq/qa/34044.html
+\def\@seccntformat#1{\csname the#1\endcsname.}
+\def\thefootnote{\fnsymbol{footnote}}
+\makeatother
+
+
+\def\baselinestretch{0.83}
+
+% 各種マージンの設定
+% 参考URL http://www.nsknet.or.jp/~tony/TeX/faq/layout.htm
+\setlength{\oddsidemargin}{20mm}
+\setlength{\evensidemargin}{20mm}
+\addtolength{\oddsidemargin}{-1in}% デフォルトのマージンを引きます.
+\addtolength{\evensidemargin}{-1in}% デフォルトのマージンを引きます.
+\setlength{\textwidth}{170mm}% 210-20-20
+\setlength{\topmargin}{30mm}
+\addtolength{\topmargin}{-1in}% デフォルトのマージンを引きます.
+\setlength{\headheight}{0mm}
+\setlength{\headsep}{0mm}
+\setlength{\textheight}{242mm}% 297-30(top)-25(bottom)
+\setlength{\columnsep}{7mm}
+
+% local settings
+% end of local settings
+
+\begin{document}
+\pagestyle{empty}
+\thispagestyle{empty}
+
+\twocolumn[%
+\begin{center}
+ {\Large 拡張可能なドキュメント検査ツール RedPen}\vspace{.5ex}
+
+ {\Large\sffamily Extensible Document Validation Tool, RedPen}\vspace{1ex}
+
+\large
+\mbox{}
+\hfil
+\setcounter{footnote}{2}
+{\bfseries 伊藤敬彦}${}^\thefootnote$
+\hfil
+\mbox{}
+
+\mbox{}
+\hfil
+{\sffamily Takahiko Ito}
+\hfil
+\mbox{}
+\hfil
+
+\end{center}
+]
+
+\setcounter{footnote}{2}
+\footnotetext{株式会社リクルートテクノロジーズ}
+
+%これを入れると行・文字が詰まります.
+%\fontsize{9pt}{0pt}\selectfont
+
+\section{概要}
+
+ソフトウェアエンジニアや研究者には、マニュアルや論文などの技術文書を書く機会が多く存在する．
+技術文書は ``規約'' にしたがって記述するという共通の特徴を持つ．
+文書の規約は文書の執筆者が従うべきルールである．
+
+一般に規約は集団で文書を作成する際にメンバが従うべき共通のルールとして使用される．
+個人で文書を記述する際にも，文書全体が一貫した記述になるために策定される．
+規約には一文の長さ，利用する句読点の種類（半角全角など），文書中で利用する技術単語の選択などがある．
+規約は文書を作成する組織ごとに大きく異なる．たとえば，アルゴリズムをアルファベットで記述する組織もあれば，
+カタカナに変換して記述する組織も存在する．どちらを採用しても大きな問題はないが，
+規約が混在してしまうと文書の可読性が低下したり，品質に関する印象を損ねるおそれがある．
+
+\section{ドキュメント検査ツール}
+
+Microsoft Word~\cite{msword}
+Just Right!~\cite{justright:2012}
+
+\section{RedPenの特徴}
+
+\section{RedPenの拡張}
+
+\section{まとめ}
+
+\bibliographystyle{plain}
+\bibliography{reference}
+
+\end{document}
