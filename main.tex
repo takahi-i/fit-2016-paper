@@ -7,6 +7,7 @@
 
 \documentclass[a4j,twocolumn]{jarticle}
 \usepackage{url}
+\usepackage{graphicx}
 \usepackage{amsmath,amssymb,amsfonts,amsthm,enumerate}
 %\usepackage[dvips]{graphicx}
 
@@ -117,9 +118,44 @@
 
 \section{RedPenの特徴}
 
+以下 RedPen の主な特徴である．
+
+\begin{description}
+
+\item[{\bf 拡張性}] 
+   プラグインシステムを提供している。Java もしくは JavaScript で手続きを記述することで機能を追加できる．
+
+\item[{\bf 対応フォーマット}]
+  現状では5種類のフォーマット（Markdown，Textile，AsciiDoc，LaTeX，Re:VIEW）に対応している．
+
+\item[{\bf 多言語対応}]
+  日本語や英語でのみ動作する機能があるが（カタカナスペル検査など），多くの RedPen が提供する機能は任意の言語でかかれた文書に対して動作する．
+
+\item[{\bf 設定の共有}]
+  RedPen で利用する規約は単一の設定ファイルですべて記述される．大規模な文書を複数人数で文書を記述している際には，設定ファイルを共有することで規約を矯正できる．
+
+\item[{\bf UI と REST API}]
+  RedPen はコマンドラインだけでなく、サーバが提供する Web UI もしくは REST API を通して利用できる。
+
+\item[{\bf エディタ}]
+  RedPen をエディタ上で利用できるパッケージが存在する。現在RedPenを利用できるエディタには Atom，Emacs，Vim，IntelliJ などがある。
+  これらのエディタでは同一の設定ファイルを利用できるので、執筆者は任意のエディタ上で規約の検査ができる。
+
+\end{description}
+
+\begin{figure}[thbp]
+\begin{center}
+\includegraphics[width=8cm]{figs/intellij.eps}
+\end{center}
+\caption{IntelliJ IDEA の RedPen パッケージ}
+\label{fig:intellij-idea}
+\end{figure}  
+
 \section{RedPenの拡張}
 
 \section{まとめ}
+本稿では自動ドキュメント検査ツール RedPen を解説した．はじめにRedPenの特徴と、利用方法および
+拡張方法について紹介した。
 
 \bibliographystyle{plain}
 \bibliography{reference-j,reference}
