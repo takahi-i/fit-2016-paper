@@ -14,8 +14,7 @@ BIBSOURCES = \
 all: pdf
 
 check:
-	pandoc content.tex -s -t markdown -o content.md
-	redpen --conf redpen-conf.xml -f markdown content.md
+	redpen --conf redpen-conf.xml -f latex main.tex
 
 pdf: dvi
 	dvipdfm  main.dvi
