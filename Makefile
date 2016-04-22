@@ -7,8 +7,9 @@ ETAGS=etags
 SOURCES = \
 	main.tex \
 
-# BIBSOURCES = \
-# 	reference.bib \
+BIBSOURCES = \
+	reference.bib \
+	reference-j.bib \
 
 all: pdf
 
@@ -27,7 +28,7 @@ dvi: main.dvi
 	$(LATEX) $* || rm -f $@
 	$(LATEX) $* || rm -f $@
 
-main.dvi: $(SOURCE) 
+main.dvi: $(SOURCE) $(BIBSOURCES)
 
 TAGS: $(SOURCES)
 	$(ETAGS) $^
