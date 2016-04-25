@@ -28,7 +28,6 @@
 \def\thefootnote{\fnsymbol{footnote}}
 \makeatother
 
-
 \def\baselinestretch{0.83}
 
 % 各種マージンの設定
@@ -110,7 +109,7 @@
 
 また自動で文書検査するツールに日本語表現法開発プロジェクト（PaWeL）が公開している Tomarigi~\cite{tomarigi}~\cite{tomarigi-paper}
 は無料で利用できる文書の自動検査ツールや``Chantokun''~\cite{chantokun} がある．しかしこれらのツールはコマンドラインでの利用ができない．
-そのため，ソフトウェアエンジニアが Git などのレポジトリ管理ツールや他のコマンドラインツール群と組み合わせて利用するのが難しい．また，
+そのため，ソフトウェアエンジニアが Git などのバージョン管理システムや他のコマンドラインツールと組み合わせて利用するのが難しい．また，
 ユーザや所属組織によって異なる規約にフィットするための規約の更新方法がシステムに提供されていない． 
 
 文法誤りの検出だけではなく訂正を行う研究に水本ら~\cite{mizumoto12english} の英文法自動誤り訂正を行ったものがあるが，手法は一般的に利用
@@ -125,10 +124,10 @@
 
 \begin{description}
 
-\item[{\bf 拡張性}] 
+\item[{\bf 拡張性}]
    プラグインシステムを提供している。Java もしくは JavaScript で手続きを記述することで機能を追加できる．
 
-\item[{\bf 対応フォーマット}]
+ \item[{\bf マークアップ言語（フォーマットへの対応）}]
   現状では5種類のフォーマット（Markdown，Textile，AsciiDoc，LaTeX，Re:VIEW）に対応している．
 
 \item[{\bf 複数の言語に対応}]
@@ -136,6 +135,8 @@
 
 \item[{\bf 柔軟な設定}]
   RedPen で利用する規約は単一の設定ファイルですべて記述される．設定ファイルは XML フォーマットで、ユーザは検査したい項目を設定ファイルに追加する。
+  図~\ref{fig:conf} は RedPen の設定例である。設定ファイルの validators ブロックに必要な機能（validaotor）を追加してゆく。図~\ref{fig:conf} では、
+  SentenceLength （文の最大長）や InvalidSymbol （利用するシンボル）などの機能が追加されている
   大規模な文書を複数人数で文書を記述している際には，設定ファイルを共有して使用することで共通で利用する規約を執筆メンバ全員に矯正できる．
 
 \item[{\bf UI と REST API}]
@@ -148,6 +149,27 @@
 
 \end{description}
 
+\begin{figure}
+  \scriptsize
+  \small
+  \begin{verbatim}
+<validator-conf lang="en">
+  <validators>
+    <validator name="SentenceLength">
+      <property name="max_len"
+                value="150"/>
+    </validator>
+    <validator name="InvalidSymbol"/>
+    <validator name="SpaceWithSymbol"/>
+    <validator name="SectionLength"/>
+  </validators>
+</validator-conf>
+  \end{verbatim}
+  \normalsize
+  \caption{RedPenの設定例}
+  \label{fig:conf}
+\end{figure}
+
 \begin{figure}[thbp]
   \begin{center}
     \includegraphics[width=8cm]{figs/intellij.eps}
@@ -159,11 +181,40 @@
 \section{RedPenの拡張}
 \label{sec:extension}
 
+RedPen は数十の文書検査用の機能を提供している。それでもユーザによっては必要な機能足りない場合がある。
+そこで RedPen ユーザが機能を自作できる環境（プラグイン機構）を用意している。プラグインは Java と JavaScript で記述できる。
+どちらで機能を作成しても問題ないが、JavaScript の方が手軽に作成できる。本節では JavaScript を利用した機能の作成方法をについて解説する。
 
+機能を作成するには、validateSentence か validateSection 関数を実装する。
+それぞれ、ドキュメント内に存在する全ての文もしくは節が引数として適用されます。今回はサンプルとして、長すぎる漢字列
+を検知する機能を作成する。
+
+\begin{figure}
+  \scriptsize
+  \small
+  \begin{verbatim}
+function validateSentence(sentence) {
+    var pat = new RegExp("[\u4e00-\u9faf]{6,}", 'g');
+
+    while (m = pat.exec(sentence.content)) {
+      addError('長い熟語 "' + m[0] + '" (' +
+              m[0].length + ') +
+              が使われています。', sentence);
+   }
+}
+  \end{verbatim}
+  \normalsize
+  \caption{長すぎる漢字列を検知する機能の実装例}
+  \label{fig:js-validator}
+\end{figure}
+
+図~\ref{fig:js-validator} をみると、機能の実装は数行で実現できていることがわかる。
+機能の作成では、まず漢字が6つ連続で出現するとマッチする正規表現を作成しています。
+その後、各文についてが正規表現とマッチするかを判定しています。
+正規表現にマッチするとエラーを addError 関数で作成~\footnote{addError関数は RedPen によって提供されている関数} しています。
 
 \section{まとめ}
-本稿では自動ドキュメント検査ツール RedPen を解説した．はじめにRedPenの特徴と、利用方法および
-拡張方法について紹介した。
+本稿では自動ドキュメント検査ツール RedPen を解説した．その後、はじめにRedPenの特徴と、利用方法および拡張方法について紹介した。
 
 \bibliographystyle{plain}
 \bibliography{reference-j,reference}
