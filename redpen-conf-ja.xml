@@ -1,4 +1,4 @@
-<redpen-conf lang="ja" type="zenkaku2" >
+<redpen-conf lang="ja" >
     <validators>
         <!--Rules on sentence length-->
         <validator name="SentenceLength">
