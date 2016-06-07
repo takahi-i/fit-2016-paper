@@ -14,7 +14,7 @@ BIBSOURCES = \
 all: pdf
 
 check:
-	redpen --conf redpen-conf.xml -f latex main.tex
+	redpen --conf redpen-conf-ja.xml -f latex main.tex
 
 pdf: dvi
 	dvipdfm  main.dvi
