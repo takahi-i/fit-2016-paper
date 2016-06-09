@@ -6,6 +6,7 @@ ETAGS=etags
 
 SOURCES = \
 	main.tex \
+	content.tex \
 
 BIBSOURCES = \
 	reference.bib \
