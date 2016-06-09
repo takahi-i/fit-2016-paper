@@ -7,7 +7,9 @@
         <validator name="CommaNumber" />
 
         <!--Rules on expressions-->
-	<validator name="KatakanaEndHyphen"/>
+	<validator name="KatakanaEndHyphen">
+	  <property name="list" value="ショートカットキー" />
+	</validator>
 	<validator name="KatakanaSpellCheck"/>
 	<validator name="InvalidExpression"/>
 	<validator name="JapaneseStyle"/>
