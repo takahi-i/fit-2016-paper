@@ -44,5 +44,7 @@
     </validators>
     <symbols>
       <symbol name="COLON" value=":" />
+      <symbol name="LEFT_PARENTHESIS" value="(" before-space="true" />
+      <symbol name="RIGHT_PARENTHESIS" value=")" after-space="true" />
     </symbols>
 </redpen-conf>
